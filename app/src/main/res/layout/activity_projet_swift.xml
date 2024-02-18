@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ProjetJava">
+    <ImageView
+        android:id="@+id/retourehome"
+        android:src="@drawable/retoure"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
+        android:background="@color/gry_faible"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_toRightOf="@+id/retourehome"
+        android:text="Les projets developper en Swift "
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/bleu"
+        android:background="@color/teal_200"
+        android:textSize="25dp"/>
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_below="@+id/retourehome"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:src="@drawable/logo_img"
+        android:background="@drawable/border_edittext"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/titleS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/retourehome"
+        android:layout_toRightOf="@+id/logo"
+        android:layout_marginTop="25dp"
+        android:text="Langage ^ SWIFT ^"
+        android:textColor="#70120B"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="italic"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSwift"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="20dp" />
+</RelativeLayout>

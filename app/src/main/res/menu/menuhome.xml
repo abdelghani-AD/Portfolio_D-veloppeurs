@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Choisi un Langage">
+        <menu>
+            <group
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/java"
+                    android:title="Java" />
+                <item
+                    android:id="@+id/kotlin"
+                    android:title="Kotlin" />
+                <item
+                    android:id="@+id/swift"
+                    android:title="Swift" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:title="Les Resaux ">
+        <menu>
+            <group
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/Youtub"
+                    android:title="Youtub" />
+                <item
+                    android:id="@+id/GitHub"
+                    android:title="GitHub" />
+            </group>
+        </menu>
+    </item>
+
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/iconHome"
+            android:title="Home"
+            android:icon="@drawable/home"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/ajouter"
+            android:icon="@drawable/add"
+            android:title="Ajouter"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/iconAccount"
+            android:icon="@drawable/account"
+            android:title="Account"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/iconChat"
+            android:icon="@drawable/icon_chat"
+            android:title="Chat"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/iconLogout"
+            android:icon="@drawable/logout"
+            android:title="Logout"
+            app:showAsAction="always"/>
+    </group>
+
+</menu>

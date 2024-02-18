@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/signup"
+    tools:context=".ui.Inscription">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp">
+        <TextView
+            android:id="@+id/name"
+            android:layout_marginTop="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name :"
+            android:textStyle="normal"
+            android:textSize="20dp" />
+        <EditText
+            android:id="@+id/editName"
+            android:layout_toRightOf="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/account"
+            android:drawablePadding="8dp"
+            android:inputType="text"
+            android:layout_marginTop="50dp"
+            android:hint="saiser name"/>
+
+        <TextView
+            android:id="@+id/prenom"
+            android:layout_below="@+id/name"
+            android:layout_marginTop="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="prenom :"
+            android:textStyle="normal"
+            android:textSize="20dp" />
+        <EditText
+            android:id="@+id/editPrenom"
+            android:layout_below="@+id/editName"
+            android:layout_toRightOf="@+id/prenom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:drawablePadding="8dp"
+            android:inputType="text"
+            android:layout_marginStart="20dp"
+            android:hint="saiser prenom"
+            android:layout_marginTop="25dp"/>
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_below="@+id/prenom"
+            android:layout_marginTop="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="number phone :"
+            android:textStyle="normal"
+            android:textSize="20dp" />
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_below="@+id/editPrenom"
+            android:layout_toRightOf="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/baseline_phone_24"
+            android:drawablePadding="8dp"
+            android:inputType="number"
+            android:hint="number phone"
+            android:layout_marginTop="25dp"/>
+
+        <TextView
+            android:id="@+id/emial"
+            android:layout_below="@+id/phone"
+            android:layout_marginTop="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email :"
+            android:textStyle="normal"
+            android:textSize="20dp" />
+        <EditText
+            android:id="@+id/editMail"
+            android:layout_below="@+id/editPhone"
+            android:layout_toRightOf="@+id/emial"
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:drawableLeft="@drawable/baseline_email_24"
+            android:drawablePadding="8dp"
+            android:hint="saiser L'email"
+            android:layout_marginTop="28dp"/>
+
+        <TextView
+            android:id="@+id/passworde"
+            android:layout_below="@+id/emial"
+            android:layout_marginTop="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passworde :"
+            android:textStyle="normal"
+            android:textSize="20dp" />
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_below="@+id/editMail"
+            android:layout_toRightOf="@+id/passworde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:drawablePadding="8dp"
+            android:hint="mot de passe "
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="25dp"/>
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_below="@+id/editPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="si tout les champs est valide "
+            android:textSize="18dp"
+            android:textColor="@color/bleu"
+            android:layout_marginTop="25dp"/>
+        <Button
+            android:id="@+id/inscrire"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkbox"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="29dp"
+            android:backgroundTint="@color/bleu"
+            android:text="S'inscrir"
+            android:textSize="25dp" />
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inscrire"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="29dp"
+            android:backgroundTint="#A9A9AC"
+            android:text="Cancel"
+            android:textSize="25dp" />
+    </RelativeLayout>
+</RelativeLayout>
