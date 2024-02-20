@@ -10,14 +10,6 @@ class ViewModele : ViewModel(){
 
     var repository = Repository()
 
-    lateinit var modele:Modele
-    fun setModel(modele: Modele){
-        this.modele= modele
-    }
-    fun getModel():Modele{
-        return Modele("java","Douirek",2)
-    }
-
     val isDataSucces = MutableLiveData<Boolean>()
 
     fun valideChampsLogin(user: String, password: String) {

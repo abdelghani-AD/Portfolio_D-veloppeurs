@@ -23,6 +23,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.projectdeveloper.R
 import com.example.projectdeveloper.model.Modele
+import com.example.projectdeveloper.model.MyData
 import com.example.projectdeveloper.mvvm.ViewModele
 
 class FragmentAddProjet : Fragment() {
@@ -65,7 +66,10 @@ class FragmentAddProjet : Fragment() {
             }
         }
         addProjet.setOnClickListener {
-            validateFields()
+            //validateFields()
+            Toast.makeText(context,nameLangage.selectedItem.toString(), Toast.LENGTH_SHORT).show()
+            var intent : Intent = Intent(requireContext(),PageHome::class.java)
+            startActivity(intent)
         }
         return view
     }
@@ -85,9 +89,8 @@ class FragmentAddProjet : Fragment() {
         val developerName = nameDevelopper.text.toString()
         if (!langageName.isEmpty() && !developerName.isEmpty() && selectedImgURL != null ) {
             //Toast.makeText(context, "Champs est validé", Toast.LENGTH_SHORT).show()
-           // PageHome.dataList.add(Modele(langageName,developerName,selectedImgURL as Int))
 
-            vieModel.setModel(Modele(langageName,developerName,selectedImgURL as Int))
+            //MyData.dataList.add(Modele("Langage_Java","AMIN AYOUBI",R.drawable.img_java))
 
             var intent : Intent = Intent(requireContext(),PageHome::class.java)
             startActivity(intent)

@@ -22,13 +22,12 @@ import androidx.transition.Visibility
 import com.example.projectdeveloper.R
 import com.example.projectdeveloper.model.CustomAdapter
 import com.example.projectdeveloper.model.Modele
+import com.example.projectdeveloper.model.MyData
 import com.example.projectdeveloper.model.OnItemClickListener
 import com.example.projectdeveloper.mvvm.ViewModele
 
 class PageHome : AppCompatActivity() , OnItemClickListener {
-    lateinit var vieModel: ViewModele
     companion object{
-        var dataList:ArrayList<Modele> = ArrayList()
         lateinit var customAdapter:CustomAdapter
     }
     lateinit var recyclerView: RecyclerView
@@ -41,33 +40,31 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         //Initialisé  Custome Adapter
-        customAdapter = CustomAdapter(this, dataList,this)
+        customAdapter = CustomAdapter(this, MyData.dataList,this)
 
         //Creation de Menu " Initialisé  Toolbar "
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-         vieModel = ViewModelProvider(this).get(ViewModele::class.java)
-         //Toast.makeText(this,vieModel.getModel().developper,Toast.LENGTH_SHORT).show()
     }
     override fun onStart() {
         super.onStart()
         //Ajouter data dans une liste
-        dataList.add(Modele("Langage_Java", "Yassin El Fadili", R.drawable.img_java))
-        dataList.add(Modele("Langage_Swift", "Imanouile Torran", R.drawable.img_swift))
-        dataList.add(Modele("Langage_Java", "Aymen Abou Mohammed", R.drawable.img_java))
-        dataList.add(Modele("Langage_Kotlin", "Nouri Mohammed Yassin", R.drawable.img_kotlin))
-        dataList.add(Modele("Langage_Swift", "Ali Belkhair", R.drawable.img_swift))
-        dataList.add(Modele("Langage_Java", "Tarik Fath-Allah", R.drawable.img_java))
-        dataList.add(Modele("Langage_Kotlin", "Mohammed Errabii", R.drawable.img_kotlin))
-        dataList.add(Modele("Langage_Swift", "Ayoub Douirek", R.drawable.img_swift))
-        dataList.add(Modele("Langage_Java", "Ahmed El Ouazzani", R.drawable.img_java))
-        dataList.add(Modele("Langage_Kotlin", "Mohammed El Hassani", R.drawable.img_kotlin))
-        dataList.add(Modele("Langage_Swift", "Abdelghani Douirek", R.drawable.img_swift))
-        dataList.add(Modele("Langage_Java", "Abderrahmane  Retabi", R.drawable.img_java))
-        dataList.add(Modele("Langage_Kotlin", "Zayed Tijanni", R.drawable.img_kotlin))
-        dataList.add(Modele("Langage_Swift", "Sara Khalid", R.drawable.img_swift))
-        //dataList.add(vieModel.getModel())
+        MyData.dataList.add(Modele("Langage_Java", "Yassin El Fadili", R.drawable.img_java))
+        MyData.dataList.add(Modele("Langage_Swift", "Imanouile Torran", R.drawable.img_swift))
+        MyData.dataList.add(Modele("Langage_Java", "Aymen Abou Mohammed", R.drawable.img_java))
+        MyData.dataList.add(Modele("Langage_Kotlin", "Nouri Mohammed Yassin", R.drawable.img_kotlin))
+        MyData.dataList.add(Modele("Langage_Swift", "Ali Belkhair", R.drawable.img_swift))
+        MyData.dataList.add(Modele("Langage_Java", "Tarik Fath-Allah", R.drawable.img_java))
+        MyData.dataList.add(Modele("Langage_Kotlin", "Mohammed Errabii", R.drawable.img_kotlin))
+        MyData.dataList.add(Modele("Langage_Swift", "Ayoub Douirek", R.drawable.img_swift))
+        MyData.dataList.add(Modele("Langage_Java", "Ahmed El Ouazzani", R.drawable.img_java))
+        MyData.dataList.add(Modele("Langage_Kotlin", "Mohammed El Hassani", R.drawable.img_kotlin))
+        MyData.dataList.add(Modele("Langage_Swift", "Abdelghani Douirek", R.drawable.img_swift))
+        MyData.dataList.add(Modele("Langage_Java", "Abderrahmane  Retabi", R.drawable.img_java))
+        MyData.dataList.add(Modele("Langage_Kotlin", "Zayed Tijanni", R.drawable.img_kotlin))
+        MyData.dataList.add(Modele("Langage_Swift", "Sara Khalid", R.drawable.img_swift))
+
         //affecter Custome Adapter dans une RecyclerView
         recyclerView.adapter = customAdapter
 
@@ -81,8 +78,8 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
             }
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                deletedItem = dataList[position]
-                dataList.removeAt(position)
+                deletedItem = MyData.dataList[position]
+                MyData.dataList.removeAt(position)
                 customAdapter.notifyItemRemoved(position)
 
                 Projet_Delete.dataDelete.add(deletedItem!!)
@@ -102,7 +99,7 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
         itemTouchHelper.attachToRecyclerView(recyclerView)
         retreat.setOnClickListener{
            deletedItem?.let {
-               dataList.add(deleteItemPosition , it)
+               MyData.dataList.add(deleteItemPosition , it)
                customAdapter.notifyItemInserted(deleteItemPosition)
                retreat.visibility = View.GONE
                deletedItem = null
@@ -113,7 +110,7 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
 
     // fonction filter les Projets By Langages qui developper cette Projet
     fun filterDataByLanguage(language: String): List<Modele> {
-        return dataList.filter { it.langage == language }
+        return MyData.dataList.filter { it.langage == language }
     }
     // Inflat Menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

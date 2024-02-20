@@ -14,8 +14,10 @@ import androidx.core.graphics.toColorInt
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
 import com.example.projectdeveloper.R
@@ -23,6 +25,7 @@ import com.example.projectdeveloper.model.Modele
 import com.example.projectdeveloper.model.MyWork
 import com.example.projectdeveloper.model.OnItemClickListener
 import com.example.projectdeveloper.mvvm.ViewModele
+import java.util.concurrent.TimeUnit
 
 
 class MainActivity : AppCompatActivity() {
@@ -68,6 +71,13 @@ class MainActivity : AppCompatActivity() {
         var workRequest:WorkRequest = OneTimeWorkRequestBuilder<MyWork>()
             .setConstraints(constraints)
             .build()
+        WorkManager.getInstance(applicationContext).enqueue(workRequest)
+        WorkManager.getInstance(applicationContext)
+            .getWorkInfoByIdLiveData(workRequest.id)
+            .observe(this, Observer { workInfo ->
+                var resultat:TextView = findViewById(R.id.resultat)
+                resultat.text ="Resultat : ${workInfo.state.isFinished}"
+            })
 
         login.setOnClickListener{
             var user : String = editUser.text.toString()
@@ -78,14 +88,22 @@ class MainActivity : AppCompatActivity() {
         signUp.setOnClickListener{
             var intent = Intent(this , Inscription::class.java)
             startActivity(intent)
-            WorkManager.getInstance(applicationContext).enqueue(workRequest)
         }
-        WorkManager.getInstance(applicationContext).enqueue(workRequest)
-        WorkManager.getInstance(applicationContext)
-            .getWorkInfoByIdLiveData(workRequest.id)
-            .observe(this, Observer { workInfo ->
-                var resultat:TextView = findViewById(R.id.resultat)
-                resultat.text ="Resultat : ${workInfo.state.isFinished}"
-            })
+    }
+    override fun onResume() {
+        super.onResume()
+        var constraints:Constraints = Constraints.Builder()
+            .setRequiresBatteryNotLow(true)
+            .setRequiresCharging(true)
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+        var workRequest = PeriodicWorkRequestBuilder<MyWork>(1, TimeUnit.MINUTES)
+            .setConstraints(constraints)
+            .build()
+        WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork(
+            "notificationWork",
+            ExistingPeriodicWorkPolicy.KEEP,
+            workRequest
+        )
     }
 }
