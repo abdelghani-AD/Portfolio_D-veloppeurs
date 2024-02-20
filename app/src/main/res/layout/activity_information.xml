@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/baground_info_projet"
     tools:context=".ui.activity_Information">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:background="@color/gry">
+        android:layout_height="wrap_content"
+        android:id="@+id/rel"
+        android:background="@drawable/baground_border">
         <ImageView
             android:id="@+id/retoure"
             android:src="@drawable/retoure"
             android:layout_width="50dp"
             android:layout_height="40dp" />
         <TextView
+            android:id="@+id/til"
+            android:layout_toRightOf="@+id/retoure"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="les Informations sur Le Projet "
+            android:text="les Informations"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/bleu"
-            android:background="@color/teal_200"
-            android:textSize="25dp"/>
-    </LinearLayout>
-    <LinearLayout
+            android:textColor="@color/gry"
+            android:textSize="25dp" />
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/imgURL"
+        android:layout_below="@+id/rel"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/baground_border"
+        android:padding="8dp"/>
+    <TextView
+        android:id="@+id/devlopp"
+        android:layout_below="@+id/rel"
+        android:layout_toRightOf="@+id/imgURL"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LOGO DE LANGAGE  "
-            android:textAlignment="center"
-            android:textSize="25dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"/>
-        <ImageView
-            android:id="@+id/imgURL"
-            android:layout_width="220dp"
-            android:layout_height="220dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/baground_border"
-            android:padding="8dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="`LES DONNEZ DE L'APPLICATION`"
-            android:textSize="25dp"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:layout_marginTop="20dp"/>
-        <TextView
-            android:id="@+id/informationDveloppeur"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Langage qui developper App "
-            android:textSize="25dp"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/baground_border"
-            android:padding="10dp"/>
-    </LinearLayout>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:hint="Name developpeur  "
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/info"
+        android:layout_below="@+id/imgURL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="`LES DONNEZ DE L'APPLICATION`"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/informationDveloppeur"
+        android:layout_below="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Langage qui developper App "
+        android:textSize="19dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+</RelativeLayout>

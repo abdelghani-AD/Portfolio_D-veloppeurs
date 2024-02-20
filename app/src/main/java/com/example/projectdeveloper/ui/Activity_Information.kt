@@ -10,6 +10,7 @@ class activity_Information : AppCompatActivity() {
     lateinit var retour:ImageView
     lateinit var image:ImageView
     lateinit var infoDeveloppeurs:TextView
+    lateinit var developpeurs:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +18,7 @@ class activity_Information : AppCompatActivity() {
         retour = findViewById(R.id.retoure)
         image = findViewById(R.id.imgURL)
         infoDeveloppeurs = findViewById(R.id.informationDveloppeur)
+        developpeurs = findViewById(R.id.devlopp)
     }
 
     override fun onStart() {
@@ -32,6 +34,7 @@ class activity_Information : AppCompatActivity() {
 
 // Affichez les données dans les TextViews et l'ImageView
         image.setImageResource(imageRessource)
+        developpeurs.text = developpeur
         var infoDeveloppeur ="Cette Application Développer par : Développeur :  $developpeur  En Langage : $langage ."
         var infoDeApp ="\n Cette application est conçue pour fournir une expérience utilisateur optimale en offrant des " +
                 "fonctionnalités avancées et une interface conviviale. Elle vise à répondre aux besoins actuels du " +

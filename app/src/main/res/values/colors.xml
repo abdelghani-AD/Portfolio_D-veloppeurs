@@ -20,4 +20,5 @@
     <color name="gry">#ACA9A9</color>
     <color name="blue">#2525FA</color>
     <color name="gry_faible">#F1F0F0</color>
+    <color name="bottom_navigation_icon_color">#FF0000</color>
 </resources>

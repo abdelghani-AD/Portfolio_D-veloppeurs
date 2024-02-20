@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Developpers</string>
+    <string name="app_name">Portfolio</string>
     <string name="login">Login </string>
     <string name="signUp">Sign Up</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -1,6 +1,7 @@
 package com.example.projectdeveloper.ui
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MotionEvent
 import android.widget.Button
@@ -18,7 +19,9 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
 import com.example.projectdeveloper.R
+import com.example.projectdeveloper.model.Modele
 import com.example.projectdeveloper.model.MyWork
+import com.example.projectdeveloper.model.OnItemClickListener
 import com.example.projectdeveloper.mvvm.ViewModele
 
 
@@ -28,7 +31,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var login: Button
     lateinit var signUp: Button
     lateinit var loginMVVM : ViewModele
-    lateinit var youtub:ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         editPassword = findViewById(R.id.editPassword)
         login = findViewById(R.id.submit)
         signUp = findViewById(R.id.noveauCompte)
-        youtub = findViewById(R.id.iconYoutub)
 
         loginMVVM = ViewModelProvider(this).get(ViewModele::class.java)
 

@@ -7,6 +7,7 @@ import com.example.projectdeveloper.model.Modele
 import com.example.projectdeveloper.repository.Repository
 
 class ViewModele : ViewModel(){
+
     var repository = Repository()
 
     lateinit var modele:Modele

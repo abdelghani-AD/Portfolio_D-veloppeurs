@@ -48,20 +48,21 @@
             android:title="Ajouter"
             app:showAsAction="always"/>
         <item
-            android:id="@+id/iconAccount"
-            android:icon="@drawable/account"
-            android:title="Account"
-            app:showAsAction="always"/>
-        <item
             android:id="@+id/iconChat"
             android:icon="@drawable/icon_chat"
             android:title="Chat"
+            app:showAsAction="always"/>
+        <item
+            android:id="@+id/iconDelete"
+            android:icon="@drawable/baseline_delete_24"
+            android:title="Logout"
             app:showAsAction="always"/>
         <item
             android:id="@+id/iconLogout"
             android:icon="@drawable/logout"
             android:title="Logout"
             app:showAsAction="always"/>
+
     </group>
 
 </menu>
