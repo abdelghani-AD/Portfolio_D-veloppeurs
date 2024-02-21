@@ -23,7 +23,6 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.projectdeveloper.R
 import com.example.projectdeveloper.model.Modele
-import com.example.projectdeveloper.model.MyData
 import com.example.projectdeveloper.mvvm.ViewModele
 
 class FragmentAddProjet : Fragment() {
@@ -33,7 +32,6 @@ class FragmentAddProjet : Fragment() {
     lateinit var addProjet: Button
     private val  REQUEST_PERMISSION_CODE = 123
     private var selectedImgURL: Uri? = null
-    private var selectedImgResourceId:Int=0
     lateinit var vieModel:ViewModele
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -80,11 +78,7 @@ class FragmentAddProjet : Fragment() {
             // L'utilisateur a sélectionné une image
             selectedImgURL = data.data
             image.setImageURI(selectedImgURL)
-            selectedImgResourceId = getResourceId(selectedImgURL)
         }
-    }
-    private fun getResourceId(uri: Uri?):Int{
-        return context?.resources?.getIdentifier(uri?.path,"drawble",context?.packageName)?:0
     }
     private fun validateFields(){
         // validation des champs

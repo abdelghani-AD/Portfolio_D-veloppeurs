@@ -10,21 +10,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.Visibility
 import com.example.projectdeveloper.R
 import com.example.projectdeveloper.model.CustomAdapter
 import com.example.projectdeveloper.model.Modele
-import com.example.projectdeveloper.model.MyData
 import com.example.projectdeveloper.model.OnItemClickListener
-import com.example.projectdeveloper.mvvm.ViewModele
 
 class PageHome : AppCompatActivity() , OnItemClickListener {
     companion object{
