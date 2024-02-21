@@ -33,6 +33,7 @@ class FragmentAddProjet : Fragment() {
     lateinit var addProjet: Button
     private val  REQUEST_PERMISSION_CODE = 123
     private var selectedImgURL: Uri? = null
+    private var selectedImgResourceId:Int=0
     lateinit var vieModel:ViewModele
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -66,10 +67,8 @@ class FragmentAddProjet : Fragment() {
             }
         }
         addProjet.setOnClickListener {
-            //validateFields()
-            Toast.makeText(context,nameLangage.selectedItem.toString(), Toast.LENGTH_SHORT).show()
-            var intent : Intent = Intent(requireContext(),PageHome::class.java)
-            startActivity(intent)
+            validateFields()
+            //Toast.makeText(context,nameLangage.selectedItem.toString(), Toast.LENGTH_SHORT).show()
         }
         return view
     }
@@ -81,17 +80,22 @@ class FragmentAddProjet : Fragment() {
             // L'utilisateur a sélectionné une image
             selectedImgURL = data.data
             image.setImageURI(selectedImgURL)
+            selectedImgResourceId = getResourceId(selectedImgURL)
         }
     }
+    private fun getResourceId(uri: Uri?):Int{
+        return context?.resources?.getIdentifier(uri?.path,"drawble",context?.packageName)?:0
+    }
     private fun validateFields(){
-        // Validate the fields here
+        // validation des champs
         val langageName = nameLangage.selectedItem.toString()
         val developerName = nameDevelopper.text.toString()
-        if (!langageName.isEmpty() && !developerName.isEmpty() && selectedImgURL != null ) {
-            //Toast.makeText(context, "Champs est validé", Toast.LENGTH_SHORT).show()
-
-            //MyData.dataList.add(Modele("Langage_Java","AMIN AYOUBI",R.drawable.img_java))
-
+        if (!langageName.isEmpty() && !developerName.isEmpty()){
+            when(nameLangage.selectedItem){
+                "Langage_Java" -> PageHome.dataList.add(Modele(langageName,developerName,R.drawable.img_java))
+                "Langage_Kotlin" -> PageHome.dataList.add(Modele(langageName,developerName,R.drawable.img_kotlin))
+                "Langage_Swift" -> PageHome.dataList.add(Modele(langageName,developerName,R.drawable.img_swift))
+            }
             var intent : Intent = Intent(requireContext(),PageHome::class.java)
             startActivity(intent)
 

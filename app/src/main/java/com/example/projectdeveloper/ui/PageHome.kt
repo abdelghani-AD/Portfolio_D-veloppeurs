@@ -29,6 +29,7 @@ import com.example.projectdeveloper.mvvm.ViewModele
 class PageHome : AppCompatActivity() , OnItemClickListener {
     companion object{
         lateinit var customAdapter:CustomAdapter
+        var dataList:ArrayList<Modele> = ArrayList()
     }
     lateinit var recyclerView: RecyclerView
     @SuppressLint("MissingInflatedId")
@@ -40,7 +41,7 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         //Initialisé  Custome Adapter
-        customAdapter = CustomAdapter(this, MyData.dataList,this)
+        customAdapter = CustomAdapter(this, dataList,this)
 
         //Creation de Menu " Initialisé  Toolbar "
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
@@ -50,20 +51,15 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
     override fun onStart() {
         super.onStart()
         //Ajouter data dans une liste
-        MyData.dataList.add(Modele("Langage_Java", "Yassin El Fadili", R.drawable.img_java))
-        MyData.dataList.add(Modele("Langage_Swift", "Imanouile Torran", R.drawable.img_swift))
-        MyData.dataList.add(Modele("Langage_Java", "Aymen Abou Mohammed", R.drawable.img_java))
-        MyData.dataList.add(Modele("Langage_Kotlin", "Nouri Mohammed Yassin", R.drawable.img_kotlin))
-        MyData.dataList.add(Modele("Langage_Swift", "Ali Belkhair", R.drawable.img_swift))
-        MyData.dataList.add(Modele("Langage_Java", "Tarik Fath-Allah", R.drawable.img_java))
-        MyData.dataList.add(Modele("Langage_Kotlin", "Mohammed Errabii", R.drawable.img_kotlin))
-        MyData.dataList.add(Modele("Langage_Swift", "Ayoub Douirek", R.drawable.img_swift))
-        MyData.dataList.add(Modele("Langage_Java", "Ahmed El Ouazzani", R.drawable.img_java))
-        MyData.dataList.add(Modele("Langage_Kotlin", "Mohammed El Hassani", R.drawable.img_kotlin))
-        MyData.dataList.add(Modele("Langage_Swift", "Abdelghani Douirek", R.drawable.img_swift))
-        MyData.dataList.add(Modele("Langage_Java", "Abderrahmane  Retabi", R.drawable.img_java))
-        MyData.dataList.add(Modele("Langage_Kotlin", "Zayed Tijanni", R.drawable.img_kotlin))
-        MyData.dataList.add(Modele("Langage_Swift", "Sara Khalid", R.drawable.img_swift))
+        dataList.add(Modele("Langage_Java", "Yassin El Fadili", R.drawable.img_java))
+        dataList.add(Modele("Langage_Swift", "Imanouile Torran", R.drawable.img_swift))
+        dataList.add(Modele("Langage_Java", "Aymen Abou Mohammed", R.drawable.img_kotlin))
+        dataList.add(Modele("Langage_Kotlin", "Nouri Mohammed Yassin", R.drawable.img_java))
+        dataList.add(Modele("Langage_Swift", "Ali Belkhair", R.drawable.img_swift))
+        dataList.add(Modele("Langage_Java", "Tarik Fath-Allah", R.drawable.img_kotlin))
+        dataList.add(Modele("Langage_Kotlin", "Mohammed Errabii", R.drawable.img_java))
+        dataList.add(Modele("Langage_Swift", "Ayoub Douirek", R.drawable.img_swift))
+        dataList.add(Modele("Langage_Java", "Ahmed El Ouazzani", R.drawable.img_kotlin))
 
         //affecter Custome Adapter dans une RecyclerView
         recyclerView.adapter = customAdapter
@@ -78,8 +74,8 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
             }
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                deletedItem = MyData.dataList[position]
-                MyData.dataList.removeAt(position)
+                deletedItem = dataList[position]
+                dataList.removeAt(position)
                 customAdapter.notifyItemRemoved(position)
 
                 Projet_Delete.dataDelete.add(deletedItem!!)
@@ -99,7 +95,7 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
         itemTouchHelper.attachToRecyclerView(recyclerView)
         retreat.setOnClickListener{
            deletedItem?.let {
-               MyData.dataList.add(deleteItemPosition , it)
+               dataList.add(deleteItemPosition , it)
                customAdapter.notifyItemInserted(deleteItemPosition)
                retreat.visibility = View.GONE
                deletedItem = null
@@ -108,9 +104,9 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
         }
     }
 
-    // fonction filter les Projets By Langages qui developper cette Projet
+    // fonction filter les Projets by Langages qui developper cette Projet
     fun filterDataByLanguage(language: String): List<Modele> {
-        return MyData.dataList.filter { it.langage == language }
+        return dataList.filter { it.langage == language }
     }
     // Inflat Menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

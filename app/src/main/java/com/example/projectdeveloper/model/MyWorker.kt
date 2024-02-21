@@ -25,28 +25,26 @@ class MyWork(context: Context, workerParams: WorkerParameters) : Worker(context,
     }
     @SuppressLint("MissingPermission")
     private fun showNotification(){
-        val channelId = "my_channel_id"
-        val notificationId = 1
-        val intent = Intent(applicationContext, PageHome::class.java)
-        val pendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
+        val intent = Intent(applicationContext, PageHome::class.java)
+        // Intent d'être lancée même si votre application est en arrière-plan ou fermée.
+        val pendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+        //pour gérer les notifications.
         val notificationManager = NotificationManagerCompat.from(applicationContext)
 
-        // Créer le canal de notification si la version d'Android est 8.0 ou supérieure
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(channelId, "My Channel", NotificationManager.IMPORTANCE_DEFAULT)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            // Initialise un constructeur de notification.
+            val channel = NotificationChannel("chainelId", "My Channel", NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(channel)
         }
-
-        // Construire la notification
-        val notificationBuilder = NotificationCompat.Builder(applicationContext, channelId)
-            .setContentTitle("Titre de la notification")
-            .setContentText("Contenu de la notification")
+        val notificationBuilder = NotificationCompat.Builder(applicationContext, "chainelId")
+            .setContentTitle("Application de Portfolio ")
+            .setContentText("Contenu de la notification pour le portfolio")
             .setSmallIcon(R.drawable.notifications)
             .addAction(R.drawable.notifications,"clique ici",pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         // Afficher la notification
-        notificationManager.notify(notificationId, notificationBuilder.build())
+        notificationManager.notify(1, notificationBuilder.build())
     }
 }

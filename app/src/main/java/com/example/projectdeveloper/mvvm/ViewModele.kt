@@ -7,19 +7,18 @@ import com.example.projectdeveloper.model.Modele
 import com.example.projectdeveloper.repository.Repository
 
 class ViewModele : ViewModel(){
-
+    //créer instance de classe Repository()
     var repository = Repository()
-
     val isDataSucces = MutableLiveData<Boolean>()
-
+    //fonction gére les donners de page login
     fun valideChampsLogin(user: String, password: String) {
         isDataSucces.value = repository.login(user, password)
     }
-
-
+    //foction gére les donners de page SignUp
     fun validCampsSignUp(name: String, prenme: String, phone: String, mail: String, password: String, isChecked: Boolean) {
         isDataSucces.value = repository.signUp(name, prenme, phone, mail, password, isChecked)
     }
+
 
    /* val isSignUpSucces = MutableLiveData<Boolean>()
     fun valideChampsLogin(user:String , password:String){

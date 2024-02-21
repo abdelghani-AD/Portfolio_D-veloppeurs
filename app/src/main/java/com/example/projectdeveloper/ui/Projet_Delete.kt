@@ -24,6 +24,7 @@ class Projet_Delete : AppCompatActivity() {
         setContentView(R.layout.activity_delete)
         back = findViewById(R.id.back)
         recyclerView = findViewById(R.id.projetDelete)
+
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = CustomAdapter(applicationContext,getDataDelete())
         recyclerView.adapter = adapter
@@ -34,10 +35,10 @@ class Projet_Delete : AppCompatActivity() {
         }
     }
     private fun getDataDelete(): ArrayList<Modele> {
-        val names = ArrayList<Modele>()
+        val projets = ArrayList<Modele>()
         for (modele in dataDelete){
-            names.add(modele)
+            projets.add(modele)
         }
-        return names
+        return projets
     }
 }
