@@ -93,8 +93,6 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         var constraints:Constraints = Constraints.Builder()
-            .setRequiresBatteryNotLow(true)
-            .setRequiresCharging(true)
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
         var workRequest = PeriodicWorkRequestBuilder<MyWork>(1, TimeUnit.MINUTES)
