@@ -47,13 +47,13 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
         //Ajouter data dans une liste
         dataList.add(Modele("Langage_Java", "Yassin El Fadili", R.drawable.img_java))
         dataList.add(Modele("Langage_Swift", "Imanouile Torran", R.drawable.img_swift))
-        dataList.add(Modele("Langage_Java", "Aymen Abou Mohammed", R.drawable.img_kotlin))
-        dataList.add(Modele("Langage_Kotlin", "Nouri Mohammed Yassin", R.drawable.img_java))
+        dataList.add(Modele("Langage_Java", "Aymen Abou Mohammed", R.drawable.img_java))
+        dataList.add(Modele("Langage_Kotlin", "Nouri Mohammed Yassin", R.drawable.img_kotlin))
         dataList.add(Modele("Langage_Swift", "Ali Belkhair", R.drawable.img_swift))
-        dataList.add(Modele("Langage_Java", "Tarik Fath-Allah", R.drawable.img_kotlin))
-        dataList.add(Modele("Langage_Kotlin", "Mohammed Errabii", R.drawable.img_java))
+        dataList.add(Modele("Langage_Java", "Tarik Fath-Allah", R.drawable.img_java))
+        dataList.add(Modele("Langage_Kotlin", "Mohammed Errabii", R.drawable.img_kotlin))
         dataList.add(Modele("Langage_Swift", "Ayoub Douirek", R.drawable.img_swift))
-        dataList.add(Modele("Langage_Java", "Ahmed El Ouazzani", R.drawable.img_kotlin))
+        dataList.add(Modele("Langage_Kotlin", "Ahmed El Ouazzani", R.drawable.img_kotlin))
 
         //affecter Custome Adapter dans une RecyclerView
         recyclerView.adapter = customAdapter
@@ -120,18 +120,22 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
                     startActivity(intent)}
                 R.id.iconChat -> { val intent = Intent(this, ActivityChat::class.java)
                     startActivity(intent) }
+
                 R.id.java -> { val filteredList = filterDataByLanguage("Langage_Java")
                     val intent = Intent(this, ProjetJava::class.java)
                     intent.putParcelableArrayListExtra("langageJava", ArrayList(filteredList))
                     startActivity(intent) }
+
                 R.id.kotlin -> { val filteredList = filterDataByLanguage("Langage_Kotlin")
                     val intent = Intent(this, ProjetKotlin::class.java)
                     intent.putParcelableArrayListExtra("langageKotlin", ArrayList(filteredList))
                     startActivity(intent) }
+
                 R.id.swift -> { val filteredList = filterDataByLanguage("Langage_Swift")
                     val intent = Intent(this, ProjetSwift::class.java)
                     intent.putParcelableArrayListExtra("langageSwift", ArrayList(filteredList))
                     startActivity(intent) }
+
                 R.id.Youtub -> { val intent = Intent(Intent.ACTION_VIEW)
                     intent.data = Uri.parse("https://www.youtube.com")
                     startActivity(intent) }
@@ -154,12 +158,15 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
         startActivity(intent)
     }
     private fun darkMode() {
+        //Récupérer le mode dark qui utilisé dans l'application
         var appCompatDelegate = AppCompatDelegate.getDefaultNightMode()
         var newNightMode =
             if (appCompatDelegate == AppCompatDelegate.MODE_NIGHT_NO) {
+                //Le mode dark est activé.
             AppCompatDelegate.MODE_NIGHT_YES
         }
         else {
+            // Le mode dark est désactivé
             AppCompatDelegate.MODE_NIGHT_NO
         }
         AppCompatDelegate.setDefaultNightMode(newNightMode)

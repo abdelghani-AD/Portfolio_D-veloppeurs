@@ -3,8 +3,6 @@ package com.example.projectdeveloper.model
 import android.os.Parcel
 import android.os.Parcelable
 
-//Parcelable est utilisé pour optimiser le processus de passage
-// d'objets complexes entre les composants
 data class Modele(var langage: String, var developper: String, var image: Int):Parcelable {
     //créer une instance de la classe à partir d'un objet Parcel. Parcel
     constructor(parcel: Parcel) : this(parcel.readString()!!, parcel.readString()!!, parcel.readInt())
