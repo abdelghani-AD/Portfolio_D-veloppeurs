@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         var constraints:Constraints = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
-        var workRequest = PeriodicWorkRequestBuilder<MyWork>(1, TimeUnit.MINUTES)
+        var workRequest = PeriodicWorkRequestBuilder<MyWork>(40, TimeUnit.SECONDS)
             .setConstraints(constraints)
             .build()
         WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork(

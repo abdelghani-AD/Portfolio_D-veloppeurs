@@ -62,7 +62,11 @@
             android:icon="@drawable/logout"
             android:title="Logout"
             app:showAsAction="always"/>
-
+        <item
+            android:id="@+id/darkMode"
+            android:icon="@drawable/dark_mode"
+            android:title="Logout"
+            app:showAsAction="always"/>
     </group>
 
 </menu>

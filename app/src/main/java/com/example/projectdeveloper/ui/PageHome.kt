@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -137,6 +138,7 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
                 R.id.GitHub -> { val intent = Intent(Intent.ACTION_VIEW)
                     intent.data = Uri.parse("https://github.com/abdelghani-AD")
                     startActivity(intent) }
+                R.id.darkMode -> { darkMode() }
             }
         return super.onOptionsItemSelected(item)
     }
@@ -150,5 +152,16 @@ class PageHome : AppCompatActivity() , OnItemClickListener {
         intent.putExtra("image",modele.image)
 
         startActivity(intent)
+    }
+    private fun darkMode() {
+        var appCompatDelegate = AppCompatDelegate.getDefaultNightMode()
+        var newNightMode =
+            if (appCompatDelegate == AppCompatDelegate.MODE_NIGHT_NO) {
+            AppCompatDelegate.MODE_NIGHT_YES
+        }
+        else {
+            AppCompatDelegate.MODE_NIGHT_NO
+        }
+        AppCompatDelegate.setDefaultNightMode(newNightMode)
     }
 }
